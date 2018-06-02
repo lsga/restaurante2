@@ -1,0 +1,11 @@
+{% extends 'loggin/administrador.html.twig' %}
+
+{% block body %}
+  <a class="btn btn-default" href="/restaurante/web/App_dev.php/productos"> Regresar</a>
+  <hr>
+    <h2 class="page-header">{{producto.NombreProducto}}</h2>
+    <ul class="list-group">
+      <li class="list-group-item"> Cantidad: {{producto.Cantidad}}</li>
+      <li class="list-group-item"> Precio: {{producto.Precio}}</li>
+    </ul>
+{% endblock %}

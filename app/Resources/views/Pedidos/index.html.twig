@@ -1,0 +1,31 @@
+{% extends 'loggin/usuario.html.twig' %}
+
+{% block body %}
+<h2 class="page-header">Todos los Pedidos</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Pedidos</th>
+      <th>Fecha</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for pedido in pedidos %}
+      <tr>
+          <td>{{pedido.id}}</td>
+          <td>{{pedido.fecha|date('F j, Y')}}</td>
+          <td>
+            <a href="/restaurante/web/App_dev.php/pedidos/detalle/{{pedido.id}}" class="btn btn-success">
+            Imprimir Factura</a>
+            <a href="/restaurante/web/App_dev.php/pedidos/detalleFecha/{{pedido.fecha|date('F j, Y')}}" class="btn btn-success">
+            Imprimir Factura Fecha</a>
+            <a href="/restaurante/web/App_dev.php/pedidos/eliminar/{{pedido.id}}" class="btn btn-danger">
+            Eliminar
+            </a>
+          </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

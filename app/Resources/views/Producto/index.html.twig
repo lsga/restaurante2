@@ -1,0 +1,31 @@
+{% extends 'loggin/administrador.html.twig' %}
+
+{% block body %}
+<h2 class="page-header">Todos los Productos</h2>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Nombre</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for producto in productos %}
+      <tr>
+          <td>{{producto.NombreProducto}}</td>
+          <td>
+            <a href="/restaurante/web/App_dev.php/producto/detalle/{{producto.id}}" class="btn btn-success">
+            Ver
+            </a>
+            <a href="/restaurante/web/App_dev.php/producto/editar/{{producto.id}}" class="btn btn-default">
+            Editar
+            </a>
+            <a href="/categorias/eliminar/{{producto.id}}" class="btn btn-danger">
+            Eliminar
+            </a>
+          </td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}

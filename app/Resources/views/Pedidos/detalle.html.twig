@@ -1,0 +1,84 @@
+{% extends 'loggin/usuario.html.twig' %}
+
+{% block body %}
+  <a class="btn btn-default" href="/restaurante/web/App_dev.php/pedidos"> Regresar</a>
+    <h2 class="page-header">Pedido {{pedidos.id}}</h2>
+    {% for mesero in meseros %}
+      {% if mesero.id == pedidos.idMesero %}
+        <h3>Mesero: {{mesero.nombreUsuario}}{{" "}}{{mesero.apellidoUsuario}}</h3>
+      {% endif %}
+    {% endfor %}
+    <h3">Cliente: {{pedidos.nombreCliente}}</h3>
+    <table class="table table-striped">
+      <thead>
+        <tr>
+          <th>Productos</th>
+          <th>Cantidad</th>
+          <th>Precio Unitario</th>
+          <th>Precio Total</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+          {% for producto in productos %}
+            {% if producto.NombreProducto == pedidos.producto1 %}
+              {% set precio1 = pedidos.cantidad1 * producto.Precio %}
+                              <tr>
+                                  <td>{{pedidos.producto1}}</td>
+                                  <td>{{pedidos.cantidad1}}</td>
+                                  <td>{{producto.Precio}}</td>
+                                  <td>{{precio1}}</td>
+                              </tr>
+            {% endif %}
+            {% if producto.NombreProducto == pedidos.producto2 %}
+               {% set precio2 = pedidos.cantidad2 * producto.Precio %}
+                              <tr>
+                                  <td>{{pedidos.producto2}}</td>
+                                  <td>{{pedidos.cantidad2}}</td>
+                                  <td>{{producto.Precio}}</td>
+                                  <td>{{precio2}}</td>
+                              </tr>
+            {% endif %}
+            {% if producto.NombreProducto == pedidos.producto3 %}
+                   {% set precio3 = pedidos.cantidad3 * producto.Precio %}
+                              <tr>
+                                  <td>{{pedidos.producto3}}</td>
+                                  <td>{{pedidos.cantidad3}}</td>
+                                  <td>{{producto.Precio}}</td>
+                                  <td>{{precio3}}</td>
+                              </tr>
+            {% endif %}
+            {% if producto.NombreProducto == pedidos.producto4 %}
+                     {% set precio4 = pedidos.cantidad4 * producto.Precio %}
+                              <tr>
+                                  <td>{{pedidos.producto4}}</td>
+                                  <td>{{pedidos.cantidad4}}</td>
+                                  <td>{{producto.Precio}}</td>
+                                  <td>{{precio4}}</td>
+                              </tr>
+            {% endif %}
+        {% endfor %}
+      </tbody>
+    </table>
+    <table style="margin-left:800px">
+    <thead>
+      <tr>
+        <th></th>
+        <th></th>
+        <th style="float:right; margin-left:-115px; margin-right:100px">TOTAL </th>
+        {% for producto in productos %}
+        {% if producto.NombreProducto == pedidos.producto1 %}
+        {% set precio1 = pedidos.cantidad1 * producto.Precio %}
+        {% elseif producto.NombreProducto == pedidos.producto2 %}
+        {% set precio2 = pedidos.cantidad2 * producto.Precio %}
+        {% elseif producto.NombreProducto == pedidos.producto3 %}
+        {% set precio3 = pedidos.cantidad3 * producto.Precio %}
+        {% elseif producto.NombreProducto == pedidos.producto4 %}
+        {% set precio4 = pedidos.cantidad4 * producto.Precio %}
+        <th>{{precio1+precio2+precio3+precio4}}</th>
+        {% endif %}
+        {% endfor %}
+      </tr>
+    </thead>
+    </table>
+{% endblock %}
